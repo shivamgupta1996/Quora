@@ -16,12 +16,18 @@ submitReply(){
   const { email } = this.props.user;
   const { reply } = this.state;
   const { cId} = this.props;
-  debugger
-  commentRef.push({email, comment: reply, commentableId:cId, type:"comment"});
-  this.setState({reply: ''})
+  if(reply ===''){
+    return alert("Cannot submit blank reply");
+  } else
+    if(email===null){
+      return alert("You have to sign in first");
+    } else {
+      commentRef.push({email, comment: reply, commentableId:cId, type:"comment"});
+      this.setState({reply: ''})
+    }
 }
   render(){
-    
+
 
     return(
 
