@@ -18,7 +18,6 @@ class ReplyDisplay extends Component{
               replies.push({email, commentKey, comment, commentableId, type}) }
 
         })
-        //console.log("replies",replies);
         this.props.postedReplies(replies);
         })
 
@@ -32,7 +31,7 @@ class ReplyDisplay extends Component{
     if (!filterReply) {
       return <div />;
     }
-  
+
     return(
       <div>
       {

@@ -16,7 +16,6 @@ class ArticleEdit extends Component {
   componentWillMount(){
     firebaseApp.database().ref(`articles/${this.props.skey}`).on('value',article => {
       const {title, body} = article.val();
-      //console.log("title",title,"body",body);
       this.setState({title, body});
     })
   }

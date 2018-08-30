@@ -22,8 +22,6 @@ class ArticleIndex extends Component {
     }
 
     renderArticles(){
-      //const {serverKey} = this.props.articles;
-      //console.log('articles', this.props.articles);
       return this.props.articles.map((t,index) => {
 
         return( <li className = "list-group-item" key={index}><Link to={`/articleShow/${t.serverKey}`}>{index+1}) {t.title}</Link></li>);
@@ -31,8 +29,7 @@ class ArticleIndex extends Component {
       });
     }
   render(){
-    // console.log("articles", this.props.articles);
-    // const { email, title, body } = this.props.articles;
+
     const transitionOptions = {
       transitionName : "fade",
       transitionEnterTimeOut: 500,

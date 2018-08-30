@@ -8,7 +8,6 @@ class ReplyDisplayItem extends Component {
 
   render(){
      const {email, comment, commentableId, commentKey} = this.props.comment;
-    //console.log("commentKey", commentKey);
     return(
       <div>
 
