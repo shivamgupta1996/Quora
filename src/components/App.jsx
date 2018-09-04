@@ -23,11 +23,15 @@ renderAddArticle(){
 
 }
 
+signinAction(){
+  browserHistory.push('/signin');
+}
+
 renderButton(){
     if(this.props.user.email!=null){
       return(<button className="btn btn-danger" onClick={()=>this.signout()}>Sign Out</button>);
     } else {
-      return(<button className="btn btn-warning"><Link to="/signin">Sign in</Link></button>);
+      return(<button className="btn btn-warning" onClick={()=>this.signinAction()}>Sign in</button>);
     }
 }
 

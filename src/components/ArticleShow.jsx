@@ -8,6 +8,8 @@ import {Link} from 'react-router';
 import ArticleEdit from './ArticleEdit';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import MetaTags from 'react-meta-tags';
+import {Glyphicon} from 'react-bootstrap';
+import { browserHistory } from 'react-router';
 
 class ArticleShow extends Component {
 
@@ -64,6 +66,9 @@ class ArticleShow extends Component {
     }
   }
 
+  back(){
+    browserHistory.push('/app');
+  }
 
   render(){
 
@@ -72,9 +77,9 @@ class ArticleShow extends Component {
     return(
       <div className="wrapper">
       <div style={{margin:'25px'}} className="container">
-      <Link to="/app">
+      <button className="btn btn-default" onClick={()=>this.back()}><Glyphicon title="back" glyph="menu-left" />
         Back
-      </Link>
+      </button>
       <article>
         <h1>{title}</h1>
         <span><em>Author: {email}</em></span>
