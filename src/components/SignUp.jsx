@@ -26,14 +26,6 @@ signUp(){
   render(){
     return(
       <div className="wrapper">
-          <MetaTags>
-            <title>Create Account</title>
-            <meta property="og:title" content="Mini Facebook App Sign Up" />
-            <meta property="og:type" content="social" />
-            <meta property="og:url" content="https://minifb.herokuapp.com/signup" />
-            <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
-            <meta property="og:description" content="Create Account" />
-          </MetaTags>
       <div className= "form-inline" style={{margin:'5%'}}>
         <h2>Sign Up</h2>
         <div className = "form-group">

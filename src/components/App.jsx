@@ -35,14 +35,6 @@ renderButton(){
 
     return(
       <div className="wrapper">
-          <MetaTags>
-            <title>Mini Facebook</title>
-            <meta property="og:title" content="Mini Facebook App" />
-            <meta property="og:type" content="social" />
-            <meta property="og:url" content="https://minifb.herokuapp.com/" />
-            <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
-            <meta property="og:description" content="An app where anyone can sign up and post articles. There is a comment and reply functionality too, just like Facebook." />
-          </MetaTags>
       <div style={{margin:'25px'}} className="container">
         <div className="imgBox"><h1>Mini Facebook</h1></div>
         <div className ="text-left userBox">Hello, {this.props.user.email}
