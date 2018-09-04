@@ -18,6 +18,13 @@
 
 }
 
+.cmbox{
+  border: 1px solid cyan;
+  border-radius: 0px 25px 0px 25px;
+  width:100%;
+  padding: 2%;
+}
+
 .commentBox{
     width:50% !important;
   }

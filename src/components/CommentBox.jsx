@@ -42,7 +42,7 @@ class CommentBox extends Component {
         <div className = "form-group">
           <input
             className = "form-control commentBox"
-            style={{marginRight:'5px'}}
+            style={{marginRight:'5px', marginBottom:'5px'}}
             type = "text"
             placeholder = "Add a comment"
             onChange = {event => this.setState({comment : event.target.value})} />

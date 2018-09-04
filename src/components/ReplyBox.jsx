@@ -37,7 +37,7 @@ submitReply(){
           <input
             type="text"
             className="form-control"
-            style={{marginRight:'5px'}}
+            style={{marginRight:'5px', marginBottom:'5px', width:'50%'}}
             onChange={(e)=> this.setState({reply: e.target.value})}
             placeholder="Add a reply"
             value={this.state.reply}
