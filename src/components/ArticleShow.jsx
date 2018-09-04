@@ -7,7 +7,7 @@ import {sendKey} from '../actions';
 import {Link} from 'react-router';
 import ArticleEdit from './ArticleEdit';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
+import MetaTags from 'react-meta-tags';
 
 class ArticleShow extends Component {
 
@@ -70,7 +70,15 @@ class ArticleShow extends Component {
 
     const { title, email, body } = this.state.article;
     return(
-
+      <div className="wrapper">
+          <MetaTags>
+            <title>Article</title>
+            <meta property="og:title" content="Mini Facebook Article" />
+            <meta property="og:type" content="social" />
+            <meta property="og:url" content="https://minifb.herokuapp.com/articleShow/" />
+            <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
+            <meta property="og:description" content="Article" />
+          </MetaTags>
       <div style={{margin:'25px'}} className="container">
       <Link to="/app">
         Back
@@ -94,7 +102,7 @@ class ArticleShow extends Component {
         {this.renderCommentBox()}
       </div>
       </div>
-
+      </div>
     )
   }
 }

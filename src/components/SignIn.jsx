@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
 import { Link } from 'react-router';
+import MetaTags from 'react-meta-tags';
 
 class SignIn extends Component {
 
@@ -26,7 +27,15 @@ signIn(){
 
   render(){
     return(
-
+      <div className="wrapper">
+          <MetaTags>
+            <title>Sign In</title>
+            <meta property="og:title" content="Mini Facebook App Sign in" />
+            <meta property="og:type" content="social" />
+            <meta property="og:url" content="https://minifb.herokuapp.com/signin" />
+            <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
+            <meta property="og:description" content="Sign In" />
+          </MetaTags>
       <div className= "form-inline" style={{margin:'5%'}}>
         <h2>Sign In</h2>
         <div className = "form-group">
@@ -58,7 +67,7 @@ signIn(){
 
 
       </div>
-
+      </div>
     );
   }
 }
