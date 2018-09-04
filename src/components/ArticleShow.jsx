@@ -76,6 +76,13 @@ class ArticleShow extends Component {
     const { title, email, body } = this.state.article;
     return(
       <div className="wrapper">
+        <MetaTags>
+          <title>Article</title>
+          <meta property="og:title" content="Article" />
+          <meta property="og:type" content="social" />
+          <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
+          <meta property="og:description" content="Article" />
+        </MetaTags>
       <div style={{margin:'25px'}} className="container">
       <button className="btn btn-default" onClick={()=>this.back()}><Glyphicon title="back" glyph="menu-left" />
         Back

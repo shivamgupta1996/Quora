@@ -28,6 +28,13 @@ signIn(){
   render(){
     return(
       <div className="wrapper">
+      <MetaTags>
+        <title>Sign In</title>
+        <meta property="og:title" content="Sign in" />
+        <meta property="og:type" content="social" />
+        <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
+        <meta property="og:description" content="Sign in to Mini facebook" />
+      </MetaTags>
       <div className= "form-inline" style={{margin:'5%'}}>
         <h2>Sign In</h2>
         <div className = "form-group">

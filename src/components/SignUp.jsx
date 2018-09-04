@@ -26,6 +26,13 @@ signUp(){
   render(){
     return(
       <div className="wrapper">
+      <MetaTags>
+        <title>Create Account</title>
+        <meta property="og:title" content="Create Account" />
+        <meta property="og:type" content="social" />
+        <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
+        <meta property="og:description" content="Sign Up" />
+      </MetaTags>
       <div className= "form-inline" style={{margin:'5%'}}>
         <h2>Sign Up</h2>
         <div className = "form-group">
