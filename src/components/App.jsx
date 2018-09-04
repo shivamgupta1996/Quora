@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import { browserHistory } from 'react-router';
 import MetaTags from 'react-meta-tags';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class App extends Component {
 
@@ -36,10 +37,10 @@ renderButton(){
 }
 
   render(){
-
     return(
       <div className="wrapper">
       <div style={{margin:'25px'}} className="container">
+
         <div className="imgBox"><h1>Mini Facebook</h1></div>
         <div className ="text-left userBox">Hello, {this.props.user.email}
         </div>
@@ -54,7 +55,6 @@ renderButton(){
         <h2>Articles</h2>
         <ArticleIndex />
         <hr />
-
       </div>
       </div>
       )

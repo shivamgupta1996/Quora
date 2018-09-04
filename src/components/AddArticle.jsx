@@ -50,7 +50,6 @@ addArticle(){
               onClick = {() => this.addArticle()}
               >Add
               </button>
-
         </div>
       </div>
     )
