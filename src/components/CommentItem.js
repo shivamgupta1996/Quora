@@ -15,8 +15,8 @@ class CommentItem extends Component {
         <span>{comment}</span>
 
         <div className="container" style={{marginTop:'10px'}}>
-          <ReplyDisplay cId={commentKey} />
           <ReplyBox cId={commentKey} />
+          <ReplyDisplay cId={commentKey} />
 
 
 
