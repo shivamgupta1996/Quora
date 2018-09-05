@@ -71,3 +71,12 @@
     opacity:1;
     transition: 0.5s ease-in all;
   }
+
+.foot{
+  border-top: solid 1px cyan;
+  padding: 2%;
+}
+
+.img-responsive{
+  height:20px !important;
+}

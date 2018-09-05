@@ -83,6 +83,7 @@ class ArticleShow extends Component {
           <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
           <meta property="og:description" content="Article" />
         </MetaTags>
+      <div className="imgBox container-fluid"><h1>Mini Facebook</h1></div>
       <div style={{margin:'25px'}} className="container">
       <button className="btn btn-default" onClick={()=>this.back()}><Glyphicon title="back" glyph="menu-left" />
         Back
@@ -105,6 +106,9 @@ class ArticleShow extends Component {
       <div>
         {this.renderCommentBox()}
       </div>
+      </div>
+      <div className="container-fluid foot">By: Shivam Gupta <br />
+        <a href="https://github.com/shivamgupta1996" target="_BLANK"><img src={require('../GitHub-Logos/GitHub_Logo.png')} className="img-responsive gitlogo" /></a>
       </div>
       </div>
     )

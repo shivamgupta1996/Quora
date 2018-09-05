@@ -7,6 +7,7 @@ import {Link} from 'react-router';
 import { browserHistory } from 'react-router';
 import MetaTags from 'react-meta-tags';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {Glyphicon} from 'react-bootstrap';
 
 class App extends Component {
 
@@ -61,7 +62,9 @@ renderButton(){
         <hr />
         <h2>Articles</h2>
         <ArticleIndex />
-        <hr />
+      </div>
+      <div className="container-fluid foot">By: Shivam Gupta <br />
+        <a href="https://github.com/shivamgupta1996" target="_BLANK"><img src={require('../GitHub-Logos/GitHub_Logo.png')} className="img-responsive gitlogo" /></a>
       </div>
       </div>
       )
