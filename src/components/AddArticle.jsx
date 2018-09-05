@@ -27,7 +27,7 @@ addArticle(){
 
   render(){
     return(
-      <div>
+      <div className="addarticle">
         <h2>Add Article</h2>
         <div className = "form-group">
           <input

@@ -39,9 +39,16 @@ renderButton(){
   render(){
     return(
       <div className="wrapper">
-      <div style={{margin:'25px'}} className="container">
+      <MetaTags>
+        <title>Home-Mini Facebook</title>
+        <meta property="og:title" content="Home-Mini Facebook" />
+        <meta property="og:type" content="social" />
+        <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
+        <meta property="og:description" content="Homepage" />
+      </MetaTags>
+      <div className="imgBox container-fluid"><h1>Mini Facebook</h1></div>
+      <div style={{margin:'25px'}} className="container cont">
 
-        <div className="imgBox"><h1>Mini Facebook</h1></div>
         <div className ="text-left userBox">Hello, {this.props.user.email}
         </div>
         <div className = "signoutBox">

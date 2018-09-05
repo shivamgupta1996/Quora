@@ -93,7 +93,7 @@ class ArticleShow extends Component {
         <p>{body}</p>
       </article>
       <hr />
-      <div>
+      <div className="editarticle">
         <h2><u>Edit</u></h2>
         {this.renderEditBox()}
       </div>

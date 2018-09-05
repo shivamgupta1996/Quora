@@ -4,6 +4,25 @@
 .imgBox{
   text-align: center;
   font-family: 'Lobster', cursive;
+  background: chartreuse;
+}
+
+.editarticle{
+  border: 1px solid cyan;
+  padding: 2%;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+
+.addarticle{
+  border: 1px solid cyan;
+  padding: 2%;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+
+.cont{
+  border: 1px solid cyan;
+    padding: 2%;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
 .list-group-item{
@@ -22,6 +41,7 @@
 .cmbox{
   border: 1px solid cyan;
   border-radius: 0px 25px 0px 25px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
   width:100%;
   padding: 2%;
 }
