@@ -7,7 +7,7 @@ class CommentItem extends Component {
 
 
   render(){
-     const {email, comment, commentableId, commentKey} = this.props.comment;
+     const {email, comment, commentKey} = this.props.comment;
     return(
       <div className="cmbox">
 

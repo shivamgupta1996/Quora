@@ -24,7 +24,7 @@ class ArticleIndex extends Component {
     renderArticles(){
       let listItems = this.props.articles.map((t,index) => {
 
-        return( <li className = "list-group-item" key={index}><Link to={`/articleShow/${t.serverKey}`}>{index+1}) {t.title}</Link></li>);
+        return( <Link to={`/articleShow/${t.serverKey}`} key={index}><li className = "list-group-item">{index+1}) {t.title}</li></Link>);
 
       });
       return <div className="transition-item list-items">{listItems}</div>;

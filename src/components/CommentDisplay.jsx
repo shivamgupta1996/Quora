@@ -40,7 +40,7 @@ class CommentDisplay extends Component {
       <ReactCSSTransitionGroup {...transitionOptions}>
       {
           filterComments.map((comment,index) => {
-            return (<div><CommentItem key={index} index={index} comment = {comment} /><hr /></div>) })
+            return (<div key={index}><CommentItem key={index} index={index} comment = {comment} /><hr /></div>) })
 
       }
       </ReactCSSTransitionGroup>
