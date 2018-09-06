@@ -31,14 +31,13 @@ class ArticleEdit extends Component {
         articleRef.child(`${this.props.skey}`)
         .set({ email, title, body });
 
-
-
       } else {
         return(<span>Only Author is allowed to edit this article</span>);
       }
 
     })
 
+    browserHistory.push('/app');
   }
 
   render(){

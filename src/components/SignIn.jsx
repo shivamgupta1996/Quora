@@ -27,7 +27,7 @@ signIn(){
 
   render(){
     return(
-      <div className="wrapper">
+      <div className="wrapper transition-item">
       <MetaTags>
         <title>Sign In</title>
         <meta property="og:title" content="Sign in" />

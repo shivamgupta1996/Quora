@@ -12,6 +12,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^3.0.1",
     "react-router-dom": "^4.3.1",
+    "react-router-page-transition": "^3.1.0",
     "react-scripts": "^1.1.4",
     "redux": "^4.0.0",
     "redux-promise": "^0.6.0"

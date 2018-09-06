@@ -25,7 +25,7 @@ signUp(){
 
   render(){
     return(
-      <div className="wrapper">
+      <div className="wrapper transition-item">
       <MetaTags>
         <title>Create Account</title>
         <meta property="og:title" content="Create Account" />

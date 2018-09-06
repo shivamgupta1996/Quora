@@ -75,7 +75,7 @@ class ArticleShow extends Component {
 
     const { title, email, body } = this.state.article;
     return(
-      <div className="wrapper">
+      <div className="wrapper transition-item detail-page">
         <MetaTags>
           <title>Article</title>
           <meta property="og:title" content="Article" />

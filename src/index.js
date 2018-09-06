@@ -11,6 +11,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import ArticleShow from './components/ArticleShow';
 import promise from 'redux-promise';
+import PageTransition from 'react-router-page-transition';
 
 const store = createStore(reducer);
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
@@ -30,14 +31,16 @@ firebaseApp.auth().onAuthStateChanged(user => {
 
 ReactDOM.render(
   <Provider store={store} >
+  <PageTransition  timeout={11500}>
+    <div class="transition-wrapper">
     <Router path="/" history={browserHistory}>
-
       <Route path="/app" component={App} />
       <Route path="/" component={App} />
       <Route path="/signin" component={SignIn} />
       <Route path="/signup" component={SignUp} />
       <Route path="/articleShow/:serverKey" component={ArticleShow} />
-
     </Router>
+    </div>
+  </PageTransition>
   </Provider>, document.getElementById('root')
 )

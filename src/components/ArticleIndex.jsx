@@ -22,11 +22,12 @@ class ArticleIndex extends Component {
     }
 
     renderArticles(){
-      return this.props.articles.map((t,index) => {
+      let listItems = this.props.articles.map((t,index) => {
 
         return( <li className = "list-group-item" key={index}><Link to={`/articleShow/${t.serverKey}`}>{index+1}) {t.title}</Link></li>);
 
       });
+      return <div className="transition-item list-items">{listItems}</div>;
     }
   render(){
 
