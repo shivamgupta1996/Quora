@@ -31,9 +31,9 @@ signinAction(){
 
 renderButton(){
     if(this.props.user.email!=null){
-      return(<button className="btn btn-danger" onClick={()=>this.signout()}>Sign Out</button>);
+      return(<a href={`/signin`}><button className="btn btn-danger" onClick={()=>this.signout()}>Sign Out</button></a>);
     } else {
-      return(<button className="btn btn-warning" onClick={()=>this.signinAction()}>Sign in</button>);
+      return(<a href={`/signin`}><button className="btn btn-warning" onClick={()=>this.signinAction()}>Sign in</button></a>);
     }
 }
 

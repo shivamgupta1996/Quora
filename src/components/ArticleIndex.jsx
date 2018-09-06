@@ -8,7 +8,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class ArticleIndex extends Component {
 
-  componentDidMount(){
+  componentWillMount(){
       articleRef.on('value',snap => {
         let articles = [];
         snap.forEach(article => {
