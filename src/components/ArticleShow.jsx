@@ -46,33 +46,11 @@ class ArticleShow extends Component {
     }
   }
 
-  renderLikeButton(){
-    if(this.state.liked === false){
-      return (
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={()=> this.triggerLike()}
-        >Like</button>
-      )
-    } else {
-      return (
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={()=> this.triggerUnLike()}
-        >Unlike</button>
-      )
-    }
-  }
-
   back(){
     browserHistory.push('/app');
   }
 
   render(){
-
-
     const { title, email, body } = this.state.article;
     return(
       <div className="wrapper transition-item detail-page">
