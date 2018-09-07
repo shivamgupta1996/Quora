@@ -50,17 +50,9 @@
     width:50% !important;
   }
 
-.img{
-    opacity:0.5;
-    height:30%;
-    width:30%;
-    transition: height 1s;
-    transition: width 1s;
-  }
-
-.img:hover{
-    height:20%;
-    width:20%;
+.img-responsive{
+  height:20px;
+    width:50px;
   }
 
   .fade-enter{
@@ -75,10 +67,9 @@
 .foot{
   border-top: solid 1px cyan;
   padding: 2%;
-}
+  text-align: -webkit-center;
+  text-align: -moz-center;
 
-.img-responsive{
-  height:20px !important;
 }
 
 .list-items{
