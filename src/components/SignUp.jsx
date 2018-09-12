@@ -22,7 +22,18 @@ signUp(){
 
   const {email, password} = this.state;
   ReactDOM.render(<img src={logo} />, document.getElementById('rat'))
-  firebaseApp.auth().createUserWithEmailAndPassword(email, password).catch(error => {this.setState({error});});
+  firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+              .catch(error => {
+                this.setState({error});
+                ReactDOM.render(
+                  <div id="rat"><button
+                    className = "btn btn-primary"
+                    type = "button"
+                    style={{marginBottom:'5px'}}
+                    onClick = {() => this.signUp()}>
+                    Sign Up
+                  </button></div>, document.getElementById('rat'))
+              });
 
 }
 
