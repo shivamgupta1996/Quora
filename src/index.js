@@ -31,8 +31,7 @@ firebaseApp.auth().onAuthStateChanged(user => {
 
 ReactDOM.render(
   <Provider store={store} >
-  <PageTransition  timeout={11500}>
-    <div className="transition-wrapper">
+  <PageTransition  timeout={500}>
     <Router path="/" history={browserHistory}>
       <Route path="/app" component={App} />
       <Route path="/" component={App} />
@@ -40,7 +39,6 @@ ReactDOM.render(
       <Route path="/signup" component={SignUp} />
       <Route path="/articleShow/:serverKey" component={ArticleShow} />
     </Router>
-    </div>
   </PageTransition>
   </Provider>, document.getElementById('root')
 )

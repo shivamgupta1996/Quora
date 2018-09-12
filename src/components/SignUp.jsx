@@ -3,6 +3,8 @@ import {firebaseApp} from '../firebase';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
 import MetaTags from 'react-meta-tags';
+import logo from './Double Ring-4s-200px.svg';
+import ReactDOM from 'react-dom';
 
 class SignUp extends Component {
   constructor(props){
@@ -19,6 +21,7 @@ class SignUp extends Component {
 signUp(){
 
   const {email, password} = this.state;
+  ReactDOM.render(<img src={logo} />, document.getElementById('rat'))
   firebaseApp.auth().createUserWithEmailAndPassword(email, password).catch(error => {this.setState({error});});
 
 }
@@ -50,19 +53,19 @@ signUp(){
               placeholder = "Password"
               onChange = {event => this.setState({password : event.target.value})} />
 
-              <button
+              <div id="rat"><button
                 className = "btn btn-primary"
                 type = "button"
                 onClick = {() => this.signUp()}>
                 Sign Up
-                </button>
+                </button></div>
                 <div>{this.state.error.message}</div>
         </div>
 
         <div>
           Already have an ID? <Link to="/signin" >Sign In </Link>
         </div>
-
+        <div><center></center></div>
       </div>
       </div>
     );

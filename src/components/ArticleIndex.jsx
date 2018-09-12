@@ -27,7 +27,7 @@ class ArticleIndex extends Component {
         return( <Link to={`/articleShow/${t.serverKey}`} key={index}><li className = "list-group-item">{index+1}) {t.title}</li></Link>);
 
       });
-      return <div className="transition-item list-items">{listItems}</div>;
+      return <div className="transition-item list-page">{listItems}</div>;
     }
   render(){
 
