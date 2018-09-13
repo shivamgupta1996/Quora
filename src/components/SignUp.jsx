@@ -37,6 +37,14 @@ signUp(){
 
 }
 
+showErrorMessage(){
+  if(this.state.error.message){
+  return(<div className="errorBox">{this.state.error.message}</div>)
+} else {
+    return <div></div>
+  }
+}
+
   render(){
     return(
       <div className="wrapper transition-item">
@@ -70,13 +78,12 @@ signUp(){
                 onClick = {() => this.signUp()}>
                 Sign Up
                 </button></div>
-                <div>{this.state.error.message}</div>
+                <div>{this.showErrorMessage()}</div>
         </div>
 
         <div>
           Already have an ID? <Link to="/signin" >Sign In </Link>
         </div>
-        <div><center></center></div>
       </div>
       </div>
     );
