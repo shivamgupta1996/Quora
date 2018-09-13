@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {firebaseApp} from '../firebase';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
-import MetaTags from 'react-meta-tags';
 import logo from './Double Ring-4s-200px.svg';
 import ReactDOM from 'react-dom';
+import {Helmet} from "react-helmet";
 
 class SignUp extends Component {
   constructor(props){
@@ -40,13 +40,13 @@ signUp(){
   render(){
     return(
       <div className="wrapper transition-item">
-      <MetaTags>
+      <Helmet>
         <title>Create Account</title>
         <meta property="og:title" content="Create Account" />
         <meta property="og:type" content="social" />
         <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
         <meta property="og:description" content="Sign Up" />
-      </MetaTags>
+      </Helmet>
       <div className= "form-inline" style={{margin:'5%'}}>
         <h2>Sign Up</h2>
         <div className = "form-group">

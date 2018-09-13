@@ -6,8 +6,8 @@ import CommentDisplay from './CommentDisplay';
 import {sendKey} from '../actions';
 import {Link} from 'react-router';
 import ArticleEdit from './ArticleEdit';
+import {Helmet} from "react-helmet";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import MetaTags from 'react-meta-tags';
 import {Glyphicon} from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 
@@ -54,13 +54,13 @@ class ArticleShow extends Component {
     const { title, email, body } = this.state.article;
     return(
       <div className="transition-item detail-page">
-        <MetaTags>
+        <Helmet>
           <title>Article</title>
           <meta property="og:title" content="Article" />
           <meta property="og:type" content="social" />
           <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
           <meta property="og:description" content="Article" />
-        </MetaTags>
+        </Helmet>
       <div className="imgBox container-fluid"><h1>Mini Facebook</h1></div>
       <div style={{margin:'25px'}} className="container">
       <button className="btn btn-default" onClick={()=>this.back()}><Glyphicon title="back" glyph="menu-left" />

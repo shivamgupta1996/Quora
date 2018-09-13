@@ -5,7 +5,7 @@ import AddArticle from './AddArticle';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import { browserHistory } from 'react-router';
-import MetaTags from 'react-meta-tags';
+import {Helmet} from "react-helmet";
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {Glyphicon} from 'react-bootstrap';
 
@@ -40,13 +40,13 @@ renderButton(){
   render(){
     return(
       <div className="wrapper transition-item">
-      <MetaTags>
+      <Helmet>
         <title>Home-Mini Facebook</title>
         <meta property="og:title" content="Home-Mini Facebook" />
         <meta property="og:type" content="social" />
         <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
         <meta property="og:description" content="Homepage" />
-      </MetaTags>
+      </Helmet>
       <div className="imgBox container-fluid"><h1>Mini Facebook</h1></div>
       <div style={{margin:'25px'}} className="container cont">
 

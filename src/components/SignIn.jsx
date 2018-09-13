@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
 import { Link } from 'react-router';
-import MetaTags from 'react-meta-tags';
 import ReactDOM from 'react-dom';
 import logo from './Double Ring-4s-200px.svg';
+import {Helmet} from "react-helmet";
 
 class SignIn extends Component {
 
@@ -39,13 +39,13 @@ signIn(){
   render(){
     return(
       <div className="wrapper transition-item">
-      <MetaTags>
+      <Helmet>
         <title>Sign In</title>
         <meta property="og:title" content="Sign in" />
         <meta property="og:type" content="social" />
         <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
         <meta property="og:description" content="Sign in to Mini facebook" />
-      </MetaTags>
+      </Helmet>
       <div className= "form-inline" style={{margin:'5%'}}>
         <h2>Sign In</h2>
         <div className = "form-group">
