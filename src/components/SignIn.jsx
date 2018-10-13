@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
 import logo from './Double Ring-4s-200px.svg';
-import {Helmet} from "react-helmet";
+import createHistory from "history/createBrowserHistory";
+import {send_uid} from '../actions';
+import SignUp from './SignUp';
+
+const history = createHistory();
+
 
 class SignIn extends Component {
 
@@ -20,18 +26,24 @@ class SignIn extends Component {
   }
 signIn(){
   const {email, password} = this.state;
-  ReactDOM.render(<img src={logo} />, document.getElementById('rat'))
-  firebaseApp.auth().signInWithEmailAndPassword(email, password).catch(
+  ReactDOM.render(<img src={logo} />, document.getElementById('rat1'))
+  firebaseApp.auth().signInWithEmailAndPassword(email, password)
+  .then((response)=>{
+    this.props.send_uid(response.user.uid);
+    history.push("/");
+    window.location.reload();
+  })
+  .catch(
     error => {
     this.setState({error});
     ReactDOM.render(
-      <div id="rat"><button
+      <div id="rat1"><button
         className = "btn btn-primary"
         type = "button"
         style={{marginBottom:'5px'}}
         onClick = {() => this.signIn()}>
         Sign In
-      </button></div>, document.getElementById('rat'))
+      </button></div>, document.getElementById('rat1'))
   });
 
 }
@@ -46,49 +58,63 @@ signIn(){
 
   render(){
     return(
-      <div className="wrapper transition-item">
-      <Helmet>
-        <title>Sign In</title>
-        <meta property="og:title" content="Sign in" />
-        <meta property="og:type" content="social" />
-        <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
-        <meta property="og:description" content="Sign in to Mini facebook" />
-      </Helmet>
-      <div className= "form-inline" style={{margin:'5%'}}>
-        <h2>Sign In</h2>
-        <div className = "form-group">
-          <input
-            className="form-control"
-            style={{marginRight:'5px'}}
-            type="text"
-            placeholder = "Username"
-            onChange = {event => this.setState({email : event.target.value})} />
+      <div className="wrapper">
+        <div className="bg-container">
+          <div className="formBox">
+            <div className="logoBox">
+            </div>
+            <div className="tagLine">
+              <h2>A place to share knowledge and better understand the world.</h2>
+            </div>
+            <div className="form-container">
+              <div className="signUpBox formContents">
+                <SignUp />
+              </div>
 
-            <input
-              className="form-control"
-              style={{marginRight:'5px'}}
-              type="password"
-              placeholder = "Password"
-              onChange = {event => this.setState({password : event.target.value})} />
+              <div className="formContents login">
+                <form>
+                  <div>
+                    <div>
+                      <label>Email</label>
+                      <input
+                        className="form-control"
+                        style={{marginBottom:'5px'}}
+                        type="text"
+                        placeholder = "Username"
+                        onChange = {event => this.setState({email : event.target.value})}
+                      />
+                    </div>
+                    <div>
+                      <label>Password</label>
+                      <input
+                        className="form-control"
+                        style={{marginBottom:'5px'}}
+                        type="password"
+                        placeholder = "Password"
+                        onChange = {event => this.setState({password : event.target.value})}
+                      />
+                    </div>
 
-              <div id="rat"><button
-                className = "btn btn-primary"
-                type = "button"
-                onClick = {() => this.signIn()}>
-                Sign In
-                </button></div>
-                <div>{this.showErrorMessage()}</div>
+                    <div id="rat1">
+                      <button
+                        className = "btn btn-primary"
+                        type = "button"
+                        onClick = {() => this.signIn()}
+                      >
+                      Sign In
+                      </button>
+                    </div>
+                    <div>{this.showErrorMessage()}</div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          Do not have an ID? <Link to="/signup" >Sign Up </Link>
-        </div>
-
-
-      </div>
       </div>
     );
   }
 }
 
 
-export default SignIn;
+export default connect (null, {send_uid})(SignIn);

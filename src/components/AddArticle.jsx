@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { articleRef } from '../firebase';
+import { questionRef } from '../firebase';
 import { connect } from 'react-redux';
 
 class AddArticle extends Component {
@@ -8,47 +8,37 @@ class AddArticle extends Component {
 
     this.state = {
       title : '',
-      body : '',
     }
   }
 
-addArticle(){
-  if(this.state.title ==''){
-    return alert("Title cannot be left blank");
+  addArticle(){
+    if(this.state.title ==''){
+      return alert("Title cannot be left blank");
 
-  }else if (this.state.body=='') {
-    return alert("Body cannot be left blank");
-  } else {
-  const {title, body} = this.state;
-  const { email } = this.props.user;
-  articleRef.push({email, title, body});
-          }
-}
+    } else {
+    const { title } = this.state;
+    const { email } = this.props.user;
+    questionRef.push({email, title});
+    }
+  }
 
   render(){
     return(
       <div className="addarticle">
-        <h2>Add Article</h2>
+        <h2>What is your question?</h2>
         <div className = "form-group">
           <input
             className = "form-control"
             type = "text"
-            placeholder = "Enter Title"
+            placeholder = "Write your question"
             onChange ={event => this.setState({title : event.target.value})} />
-
-          <input
-            className = "form-control"
-            style={{marginTop:'10px'}}
-            type = "text"
-            placeholder = "Type in your article content here"
-            onChange ={event => this.setState({body : event.target.value})} />
 
             <button
               type = "button"
               style={{marginTop:'10px'}}
               className = "btn btn-primary"
               onClick = {() => this.addArticle()}
-              >Add
+              >Add Question
               </button>
         </div>
       </div>

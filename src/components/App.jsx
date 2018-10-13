@@ -1,82 +1,92 @@
 import React, { Component } from 'react';
-import { firebaseApp } from '../firebase';
+import { firebaseApp, userRef } from '../firebase';
 import ArticleIndex from './ArticleIndex';
 import AddArticle from './AddArticle';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
-import { browserHistory } from 'react-router';
-import {Helmet} from "react-helmet";
+import {Link} from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {Glyphicon} from 'react-bootstrap';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      detail : {},
+    }
+  }
+
+  componentDidMount(){
+  }
 
   signout(){
-
-      firebaseApp.auth().signOut().then(browserHistory.push("/signin"));
-    }
-
-renderAddArticle(){
-  if (this.props.user.email != null) {
-    return (<AddArticle />);
-  } else {
-    return (<div>Please Login to Add a Post</div>);
+    firebaseApp.auth().signOut();
   }
 
-}
-
-signinAction(){
-  browserHistory.push('/signin');
-}
-
-renderButton(){
-    if(this.props.user.email!=null){
-      return(<a href={`/signin`}><button className="btn btn-danger" onClick={()=>this.signout()}>Sign Out</button></a>);
+  renderAddArticle(){
+    if (this.props.user.email != null) {
+      return (<AddArticle />);
     } else {
-      return(<a href={`/signin`}><button className="btn btn-warning" onClick={()=>this.signinAction()}>Sign in</button></a>);
+      return (<div>Please Login to Add a Post</div>);
     }
-}
+  }
+
+
+  renderButton(){
+
+    if(this.props.user.email!=null){
+      return(<Link to = "/signin"><button className="btn btn-danger" onClick={()=>this.signout()}>Sign Out</button></Link>);
+    } else {
+      return(<Link to = "/signin"><button className="btn btn-warning">Sign in</button></Link>);
+    }
+  }
 
   render(){
+    const {email} = this.props.user;
+    console.log("uid",this.props.uid);
     return(
-      <div className="wrapper transition-item">
-      <Helmet>
-        <title>Home-Mini Facebook</title>
-        <meta property="og:title" content="Home-Mini Facebook" />
-        <meta property="og:type" content="social" />
-        <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
-        <meta property="og:description" content="Homepage" />
-      </Helmet>
-      <div className="imgBox container-fluid"><h1>Mini Facebook</h1></div>
-      <div style={{margin:'25px'}} className="container cont">
+      <div className="wrapper">
+        <div className="container-fluid header">
+          <div className="container innerHeader">
+            <div className="imgBox col-md-8">
+              <a href="/"></a>
+            </div>
 
-        <div className ="text-left userBox">Hello, {this.props.user.email}
+            <div className="profileBox">
+              Hello, {email}
+              <div className="profileOption">
+                {this.renderButton()}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className = "signoutBox">
-          {this.renderButton()}
+
+        <div className="container bodycontainer">
+          <div>
+            {this.renderAddArticle()}
+          </div>
+
+            <hr />
+          <div>
+            <h2>Questions</h2>
+            <ArticleIndex />
+          </div>
         </div>
-        <hr />
-        <div>
-          {this.renderAddArticle()}
+        <div className="container-fluid foot">By: Shivam Gupta <br />
+          <a href="https://github.com/shivamgupta1996" target="_BLANK"><img src={require('../GitHub-Logos/GitHub_Logo.png')} className="img-responsive gitlogo" /></a>
         </div>
-        <hr />
-        <h2>Articles</h2>
-        <ArticleIndex />
       </div>
-      <div className="container-fluid foot">By: Shivam Gupta <br />
-        <a href="https://github.com/shivamgupta1996" target="_BLANK"><img src={require('../GitHub-Logos/GitHub_Logo.png')} className="img-responsive gitlogo" /></a>
-      </div>
-      </div>
-      )
-    }
+    )
   }
+}
 
   function mapStateToProps(state){
 
-    const {user} = state;
+    const {user, uid} = state;
     return {
-      user
+      user,
+      uid
     }
 
   }
-  export default connect (mapStateToProps)(App);
+  export default connect (mapStateToProps, null)(App);

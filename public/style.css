@@ -1,10 +1,82 @@
 *{
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.header{
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 50px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 800;
+  font-size: 14px;
+  color: #fff;
+  border-top: 2px solid #b92b27;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2);
+}
+
+.innerHeader{
+  display: flex;
+}
+
+.header .headerInner{
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
 }
 .imgBox{
-  text-align: center;
-  font-family: 'Lobster', cursive;
-  background: chartreuse;
+  z-index: 1;
+  overflow: hidden;
+  width: 100px;
+}
+.imgBox a{
+  display: block;
+    width: 80px;
+    min-width: 80px;
+    height: 50px;
+    background-size: 80px 23px;
+    background-image: url(//qsf.fs.quoracdn.net/-3-images.logo.wordmark_default.svg-26-bfa6b94bc0d6af2e.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.profileBox{
+  color: black;
+  display: flex;
+  position: relative;
+  line-height: 47px;
+}
+.profileOption{
+  display: flex;
+  margin-left: 5px;
+}
+
+.bodycontainer{
+  margin-top: 75px;
+}
+.bodycontainer1{
+  margin-top: 73px;
+  margin-left: 77px !important;
+}
+
+.header_nav{
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  margin-left: 8px!important;
 }
 
 .editarticle{
@@ -13,7 +85,84 @@
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
+.bg-container{
+  background: url(//qsf.fs.quoracdn.net/-3-images.home.illo_1920.png-26-5ac607d989ef8067.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.formBox{
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 0 5px #888;
+  border-radius: 4px;
+  padding-top: 25px;
+  width: 650px;
+  position: absolute;
+  bottom: initial;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow-y: hidden;
+  top: 10%;
+}
+
+.logoBox{
+  margin: auto;
+  width: 224px;
+  min-width: 224px;
+  background-size: 224px 63px;
+  background-image: url(//qsf.fs.quoracdn.net/-3-images.logo.wordmark_default.svg-26-bfa6b94bc0d6af2e.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 82px;
+  position: relative;
+}
+
+.suBox{
+  border-right: 1px solid cyan;
+}
+
+.formContents{
+  padding: 32px;
+  padding-top: 0;
+}
+.signUpBox{
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+}
+
+.login{
+  position: relative;
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+}
+
+.tagLine h2{
+  font-family: 'q_serif',Georgia,Times,"Times New Roman","Hiragino Kaku Gothic Pro","Meiryo",serif;
+  font-size: 19px;
+  font-weight: 400;
+  margin: 8px 0 32px;
+  color: #949494;
+  text-align: center;
+}
+
 #rat img{
+  height:100px;
+}
+
+#rat1 img{
   height:100px;
 }
 
@@ -24,9 +173,8 @@
 }
 
 .cont{
-  border: 1px solid cyan;
-    padding: 2%;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  padding: 2%;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
 .list-group-item{
@@ -81,50 +229,10 @@
   transform: translate3d(0, 0, 0);
 }
 
-.list-items.transition-appear {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
-}
-
-.list-items.transition-appear.transition-appear-active {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
-
-.list-items.transition-leave {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
-
-.list-items.transition-leave.transition-leave-active {
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
-}
-
 .detail-page {
     overflow: auto;
     box-sizing: border-box;
     transition: transform 0.5s, opacity 0.5s;
-}
-
-.detail-page.transition-appear {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
-}
-
-.detail-page.transition-appear.transition-appear-active {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
-
-.detail-page.transition-leave {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
-
-.detail-page.transition-leave.transition-leave-active {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
 }
 
 .errorBox{

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {firebaseApp} from '../firebase';
-import { Link } from 'react-router';
-import { browserHistory } from 'react-router';
+import {firebaseApp, userRef} from '../firebase';
+import { Link } from 'react-router-dom';
 import logo from './Double Ring-4s-200px.svg';
 import ReactDOM from 'react-dom';
-import {Helmet} from "react-helmet";
+import createHistory from "history/createBrowserHistory";
+
+const history = createHistory();
 
 class SignUp extends Component {
   constructor(props){
@@ -13,6 +14,8 @@ class SignUp extends Component {
     this.state = {
       email : '',
       password : '',
+      fname:'',
+      lname:'',
       error : {
         message : ''
       }
@@ -23,6 +26,17 @@ signUp(){
   const {email, password} = this.state;
   ReactDOM.render(<img src={logo} />, document.getElementById('rat'))
   firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+              .then((response) =>{
+                const { uid } = response.user;
+                const { email, fname, lname } = this.state;
+
+                userRef.child(`${uid}`).set({
+                  username: fname +" "+ lname,
+                  email: email,
+                })
+                history.push("/");
+                window.location.reload();
+              })
               .catch(error => {
                 this.setState({error});
                 ReactDOM.render(
@@ -47,44 +61,67 @@ showErrorMessage(){
 
   render(){
     return(
-      <div className="wrapper transition-item">
-      <Helmet>
-        <title>Create Account</title>
-        <meta property="og:title" content="Create Account" />
-        <meta property="og:type" content="social" />
-        <meta property="og:image" content="https://image.ibb.co/fKbPXp/mini_facebook.png" />
-        <meta property="og:description" content="Sign Up" />
-      </Helmet>
-      <div className= "form-inline" style={{margin:'5%'}}>
-        <h2>Sign Up</h2>
-        <div className = "form-group">
-          <input
-            className="form-control"
-            style={{marginRight:'5px'}}
-            type="text"
-            placeholder = "Username"
-            onChange = {event => this.setState({email : event.target.value})} />
+      <div className="form-container suBox">
+        <div className="formContents">
+          <form>
+            <div>
 
-            <input
-              className="form-control"
-              style={{marginRight:'5px'}}
-              type="password"
-              placeholder = "Password"
-              onChange = {event => this.setState({password : event.target.value})} />
+              <div style={{marginBottom:'5px'}}>
+                <label>First Name</label>
+                <input
+                  className="form-control"
+                  required
+                  type="text"
+                  placeholder = "First Name"
+                  onChange = {event => this.setState({fname : event.target.value})}
+                />
+              </div>
 
-              <div id="rat"><button
-                className = "btn btn-primary"
-                type = "button"
-                onClick = {() => this.signUp()}>
+              <div style={{marginBottom:'5px'}}>
+                <label>Last Name</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  required
+                  placeholder = "Last Name"
+                  onChange = {event => this.setState({lname : event.target.value})}
+                />
+              </div>
+
+              <div style={{marginBottom:'5px'}}>
+                <label>Email</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  placeholder = "Username"
+                  onChange = {event => this.setState({email : event.target.value})}
+                />
+              </div>
+
+              <div style={{marginBottom:'5px'}}>
+                <label>Password</label>
+                <input
+                  className="form-control"
+                  type="password"
+                  placeholder = "Password"
+                  onChange = {event => this.setState({password : event.target.value})}
+                />
+              </div>
+
+              <div id="rat">
+                <button
+                  className = "btn btn-primary"
+                  type = "button"
+                  onClick = {() => this.signUp()}
+                >
                 Sign Up
-                </button></div>
-                <div>{this.showErrorMessage()}</div>
-        </div>
+                </button>
+              </div>
 
-        <div>
-          Already have an ID? <Link to="/signin" >Sign In </Link>
+              <div>{this.showErrorMessage()}</div>
+            </div>
+          </form>
         </div>
-      </div>
       </div>
     );
   }

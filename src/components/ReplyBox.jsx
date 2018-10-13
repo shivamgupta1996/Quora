@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { commentRef } from '../firebase';
+import { answerRef } from '../firebase';
 
 class ReplyBox extends Component {
 
@@ -22,7 +22,7 @@ submitReply(){
     if(email===null){
       return alert("You have to sign in first");
     } else {
-      commentRef.push({email, comment: reply, commentableId:cId, type:"comment"});
+      answerRef.push({email, comment: reply, commentableId:cId, type:"comment"});
       this.setState({reply: ''})
     }
 }
@@ -39,7 +39,7 @@ submitReply(){
             className="form-control"
             style={{marginRight:'5px', marginBottom:'5px', width:'50%'}}
             onChange={(e)=> this.setState({reply: e.target.value})}
-            placeholder="Add a reply"
+            placeholder="Add a comment"
             value={this.state.reply}
             />
 

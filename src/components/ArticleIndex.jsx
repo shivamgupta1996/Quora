@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { articleRef } from '../firebase';
+import { questionRef } from '../firebase';
 import { connect } from 'react-redux';
 import { postedArticles } from '../actions';
 import ArticleShow from './ArticleShow';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class ArticleIndex extends Component {
 
   componentWillMount(){
-      articleRef.on('value',snap => {
+      questionRef.on('value',snap => {
         let articles = [];
         snap.forEach(article => {
           const { email, title, body } = article.val();
@@ -24,7 +24,7 @@ class ArticleIndex extends Component {
     renderArticles(){
       let listItems = this.props.articles.map((t,index) => {
 
-        return( <Link to={`/articleShow/${t.serverKey}`} key={index}><li className = "list-group-item">{index+1}) {t.title}</li></Link>);
+        return( <Link to={`/articleShow/${t.serverKey}`} key={index}><li className = "list-group-item">{index+1}) {t.title}  <small><em>    -{t.email}</em></small></li></Link>);
 
       });
       return <div className="transition-item list-page">{listItems}</div>;

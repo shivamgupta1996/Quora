@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { commentRef } from '../firebase';
+import { answerRef } from '../firebase';
 import {connect} from 'react-redux';
 import {postedComments} from '../actions';
 import CommentItem from './CommentItem';
@@ -9,7 +9,7 @@ import _ from 'lodash';
 class CommentDisplay extends Component {
 
   componentDidMount(){
-      commentRef.on('value',snap => {
+      answerRef.on('value',snap => {
         let comments = [];
         snap.forEach(commentObj => {
           const {commentableId} = commentObj.val();
@@ -36,7 +36,7 @@ class CommentDisplay extends Component {
 
     return(
       <div>
-      <h3><u>Comments</u></h3>
+      <h3><u>Answers</u></h3>
       <ReactCSSTransitionGroup {...transitionOptions}>
       {
           filterComments.map((comment,index) => {

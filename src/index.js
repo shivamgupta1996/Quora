@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { BrowserRouter, Router, Route, Switch, Redirect } from 'react-router-dom';
 import { firebaseApp } from './firebase';
 import { Provider } from 'react-redux';
 import { logUser } from './actions';
@@ -8,18 +8,18 @@ import reducer from './reducers';
 import { createStore, applyMiddleware } from 'redux';
 import App from './components/App';
 import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
 import ArticleShow from './components/ArticleShow';
 import promise from 'redux-promise';
-import PageTransition from 'react-router-page-transition';
+import createHistory from "history/createBrowserHistory";
 
+const history = createHistory();
 const store = createStore(reducer);
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 firebaseApp.auth().onAuthStateChanged(user => {
   if(user) {
 
-    browserHistory.push('/app');
+    history.push("/app");
     const { email } = user;
     store.dispatch(logUser(email));
   } else {
@@ -31,14 +31,16 @@ firebaseApp.auth().onAuthStateChanged(user => {
 
 ReactDOM.render(
   <Provider store={store} >
-  <PageTransition  timeout={500}>
-    <Router path="/" history={browserHistory}>
-      <Route path="/app" component={App} />
-      <Route path="/" component={App} />
-      <Route path="/signin" component={SignIn} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/articleShow/:serverKey" component={ArticleShow} />
-    </Router>
-  </PageTransition>
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route exact path="/" component={App} />
+          <Route path="/app" component={App} />
+          <Route path="/signin" component={SignIn} />
+          <Route path="/signup" component={SignIn} />
+          <Route path="/articleShow/:serverKey" component={ArticleShow} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   </Provider>, document.getElementById('root')
 )

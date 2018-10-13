@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { articleRef } from '../firebase';
+import { questionRef } from '../firebase';
 import { firebaseApp } from '../firebase';
-import { browserHistory } from 'react-router';
+
 class ArticleEdit extends Component {
 
   constructor(props){
@@ -10,34 +10,33 @@ class ArticleEdit extends Component {
 
     this.state = {
       title : '',
-      body : ''
     }
   }
   componentDidMount(){
-    firebaseApp.database().ref(`articles/${this.props.skey}`).on('value',article => {
+    questionRef.child(`${this.props.skey}`).on('value',article => {
       const {title, body} = article.val();
-      this.setState({title, body});
+      this.setState({title});
     })
   }
 
   editArticle(){
 
-    const {title, body} = this.state;
+    const {title} = this.state;
     const { email } = this.props.user;
-    firebaseApp.database().ref(`articles/${this.props.skey}`).on('value',article => {
+    firebaseApp.database().ref(`question/${this.props.skey}`).on('value',snap => {
 
-      const articleAuthorEmail = article.val().email;
-      if (email == articleAuthorEmail){
-        articleRef.child(`${this.props.skey}`)
-        .set({ email, title, body });
-
+      const quesAuthorEmail = snap.val().email;
+      if (email == quesAuthorEmail){
+        questionRef.child(`${this.props.skey}`)
+        .set({ email, title });
+        window.location.reload();
       } else {
         return(<span>Only Author is allowed to edit this article</span>);
       }
 
     })
 
-    browserHistory.push('/app');
+
   }
 
   render(){
@@ -53,14 +52,6 @@ class ArticleEdit extends Component {
             value = {this.state.title}
             placeholder = "Enter Title"
             onChange ={event => this.setState({title : event.target.value})} />
-
-          <input
-            className = "form-control"
-            type = "text"
-            style={{marginTop:'10px'}}
-            value = {this.state.body}
-            placeholder = "Type in your article content here"
-            onChange ={event => this.setState({body : event.target.value})} />
 
             <button
               type = "button"

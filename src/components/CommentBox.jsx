@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { firebaseApp } from  '../firebase';
 import { connect } from 'react-redux';
-import { commentRef } from  '../firebase';
+import { answerRef } from  '../firebase';
 
 class CommentBox extends Component {
 
@@ -29,9 +29,10 @@ class CommentBox extends Component {
     const { comment } = this.state;
     const { email } = this.props.user;
     if(this.state.comment ==''){
-      return alert("Cannot submit blank comment");
+      return alert("Cannot submit blank answer");
     } else {
-    commentRef.push({comment, email, commentableId:this.props.serverKey, type:"article"});
+    answerRef.push({comment, email, commentableId:this.props.serverKey, type:"article"});
+    this.setState({comment:''})
     }
   }
 
@@ -40,12 +41,13 @@ class CommentBox extends Component {
     return(
       <div className = "form-inline">
         <div className = "form-group">
-          <input
+          <textarea
+            cols="100"
             className = "form-control commentBox"
             style={{marginRight:'5px', marginBottom:'5px'}}
-            type = "text"
-            placeholder = "Add a comment"
-            onChange = {event => this.setState({comment : event.target.value})} />
+            placeholder = "Add an answer"
+            onChange = {event => this.setState({comment : event.target.value})}>
+          </textarea>
 
           <button
             className = "btn btn-primary"

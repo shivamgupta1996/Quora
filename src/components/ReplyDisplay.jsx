@@ -2,13 +2,13 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { postedReplies } from '../actions';
-import { commentRef } from '../firebase';
+import { answerRef } from '../firebase';
 import ReplyDisplayItem from './ReplyDisplayItem';
 
 class ReplyDisplay extends Component{
 
   componentDidMount(){
-      commentRef.on('value',snap => {
+      answerRef.on('value',snap => {
         let replies = [];
         snap.forEach(replyObj => {
           const {commentableId} = replyObj.val();
