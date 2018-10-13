@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import logo from './Double Ring-4s-200px.svg';
 import createHistory from "history/createBrowserHistory";
-import {send_uid} from '../actions';
 import SignUp from './SignUp';
 
 const history = createHistory();
@@ -28,8 +27,7 @@ signIn(){
   const {email, password} = this.state;
   ReactDOM.render(<img src={logo} />, document.getElementById('rat1'))
   firebaseApp.auth().signInWithEmailAndPassword(email, password)
-  .then((response)=>{
-    this.props.send_uid(response.user.uid);
+  .then(()=>{
     history.push("/");
     window.location.reload();
   })
@@ -117,4 +115,4 @@ signIn(){
 }
 
 
-export default connect (null, {send_uid})(SignIn);
+export default SignIn;

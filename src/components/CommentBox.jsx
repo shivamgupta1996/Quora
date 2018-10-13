@@ -28,10 +28,11 @@ class CommentBox extends Component {
 
     const { comment } = this.state;
     const { email } = this.props.user;
+    const {name, serverKey} = this.props;
     if(this.state.comment ==''){
       return alert("Cannot submit blank answer");
     } else {
-    answerRef.push({comment, email, commentableId:this.props.serverKey, type:"article"});
+    answerRef.push({comment, email, name, commentableId:serverKey, type:"article"});
     this.setState({comment:''})
     }
   }

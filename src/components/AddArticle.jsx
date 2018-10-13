@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { questionRef } from '../firebase';
+import { questionRef, firebaseApp } from '../firebase';
 import { connect } from 'react-redux';
 
 class AddArticle extends Component {
@@ -8,7 +8,15 @@ class AddArticle extends Component {
 
     this.state = {
       title : '',
+      name:''
     }
+  }
+
+  componentWillMount() {
+    const {uid} = this.props.user;
+    firebaseApp.database().ref(`users/${uid}`).on('value', snap =>{
+      this.setState({name : snap.val().username});
+    })
   }
 
   addArticle(){
@@ -16,9 +24,10 @@ class AddArticle extends Component {
       return alert("Title cannot be left blank");
 
     } else {
-    const { title } = this.state;
+    const { title, name } = this.state;
     const { email } = this.props.user;
-    questionRef.push({email, title});
+    questionRef.push({name, email, title});
+    this.setState({title :''})
     }
   }
 

@@ -5,21 +5,13 @@ export const POSTED_COMMENTS = "posted_comments";
 export const POSTED_REPLIES = "posted_replies";
 export const POSTED_SUBCOMMENTS = "posted_subcomments";
 export const SEND_KEY = "send_key";
-export const SEND_UID = "send_uid";
 
-export function logUser(email) {
+
+export function logUser(email,uid) {
 
   const action = {
     type : SIGNED_IN,
-    email
-  }
-  return action;
-}
-
-export function send_uid(uid) {
-
-  const action = {
-    type : SEND_UID,
+    email,
     uid
   }
   return action;

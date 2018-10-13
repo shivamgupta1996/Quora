@@ -16,6 +16,7 @@ class ArticleShow extends Component {
   state = {
     article: {},
     editable: false,
+    name:'',
     currentU:firebaseApp.auth().currentUser
   }
 
@@ -23,6 +24,18 @@ class ArticleShow extends Component {
     questionRef.child(`${this.props.match.params.serverKey}`)
     .once('value', (shivam) => {
       this.setState({article: shivam.val()});
+    })
+
+    const {uid} = this.props.user;
+    firebaseApp.database().ref(`users/${uid}`).on('value', snap =>{
+      this.setState({name : snap.val().username});
+    })
+  }
+
+  componentWillReceiveProps(nextProps){
+    const {uid} = nextProps.user;
+    firebaseApp.database().ref(`users/${uid}`).on('value', snap =>{
+      this.setState({name : snap.val().username});
     })
   }
 
@@ -45,9 +58,9 @@ class ArticleShow extends Component {
       } else return(<div></div>)
   }
 
-  renderCommentBox(){
+  renderCommentBox(name){
     if (this.state.currentU!= null) {
-      return (<CommentBox serverKey={this.props.match.params.serverKey} />);
+      return (<CommentBox name={name} serverKey={this.props.match.params.serverKey} />);
     } else {
       return (<h4>Please Login to comment on this Post</h4>);
     }
@@ -73,7 +86,9 @@ class ArticleShow extends Component {
 
   render(){
     const { title, email } = this.state.article;
+    const pName = this.state.article.name;
     const mail = this.props.user.email;
+    const {name} = this.state;
     return(
       <div className="detail-page">
       <div className="container-fluid header">
@@ -83,7 +98,7 @@ class ArticleShow extends Component {
           </div>
 
           <div className="profileBox">
-            Hello, {mail}
+            Hello, {name===""? mail : name}
             <div className="profileOption">
               {this.renderButton()}
             </div>
@@ -96,7 +111,7 @@ class ArticleShow extends Component {
         </button>
         <article>
           <h1>{title}</h1><span className="arti" onClick={()=>this.setState({editable: !this.state.editable})}><a href="#">Edit</a></span>
-          <div><em>Author: {email}</em></div>
+          <div><em>Author: {pName}</em></div>
         </article>
         <hr />
         <div>
@@ -108,7 +123,7 @@ class ArticleShow extends Component {
         </div>
         <hr />
         <div>
-          {this.renderCommentBox()}
+          {this.renderCommentBox(name)}
         </div>
       </div>
       <div className="container-fluid foot">By: Shivam Gupta <br />

@@ -13,9 +13,9 @@ class ReplyDisplay extends Component{
         snap.forEach(replyObj => {
           const {commentableId} = replyObj.val();
             if(commentableId == this.props.cId){
-              const { email, comment, commentableId, type } = replyObj.val();
+              const { email, comment, commentableId, type, name } = replyObj.val();
               const commentKey = replyObj.key;
-              replies.push({email, commentKey, comment, commentableId, type}) }
+              replies.push({email, commentKey, comment, name, commentableId, type}) }
 
         })
         this.props.postedReplies(replies);

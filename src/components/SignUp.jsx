@@ -26,7 +26,7 @@ signUp(){
   const {email, password} = this.state;
   ReactDOM.render(<img src={logo} />, document.getElementById('rat'))
   firebaseApp.auth().createUserWithEmailAndPassword(email, password)
-              .then((response) =>{
+              .then((response,user) =>{
                 const { uid } = response.user;
                 const { email, fname, lname } = this.state;
 
@@ -34,6 +34,7 @@ signUp(){
                   username: fname +" "+ lname,
                   email: email,
                 })
+                return user.updateProfile({displayName:fname + " " +lname });
                 history.push("/");
                 window.location.reload();
               })

@@ -7,15 +7,15 @@ class ReplyDisplayItem extends Component {
 
 
   render(){
-     const {email, comment, commentableId, commentKey} = this.props.comment;
+     const {email, comment, commentableId, commentKey, name} = this.props.comment;
     return(
       <div>
 
-        <div><strong><u>{email}</u></strong></div>
+        <div><strong><u>{name}</u></strong></div>
         <span>{comment}</span>
 
         <div className="container" style={{marginTop:'10px'}}>
-          <ReplyBox cId={commentKey} />
+          <ReplyBox name={name} cId={commentKey} />
           <ReplyDisplay cId={commentKey} />
         </div>
 

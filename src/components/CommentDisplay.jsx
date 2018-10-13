@@ -14,9 +14,9 @@ class CommentDisplay extends Component {
         snap.forEach(commentObj => {
           const {commentableId} = commentObj.val();
             if(commentableId == this.props.serverKey){
-              const { email, comment, commentableId, type } = commentObj.val();
+              const { email, comment, commentableId, type, name } = commentObj.val();
               const commentKey = commentObj.key;
-              comments.push({email, comment, commentableId, commentKey, type}) }
+              comments.push({email, name, comment, commentableId, commentKey, type}) }
         })
         this.props.postedComments(comments);
         })

@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { questionRef } from '../firebase';
 import { firebaseApp } from '../firebase';
+import createHistory from "history/createBrowserHistory";
+
+const history = createHistory();
 
 class ArticleEdit extends Component {
 
@@ -28,8 +31,10 @@ class ArticleEdit extends Component {
       const quesAuthorEmail = snap.val().email;
       if (email == quesAuthorEmail){
         questionRef.child(`${this.props.skey}`)
-        .set({ email, title });
-        window.location.reload();
+        .update({ title }).then(()=>{
+          history.push('/')
+          window.location.reload()
+        })
       } else {
         return(<span>Only Author is allowed to edit this article</span>);
       }

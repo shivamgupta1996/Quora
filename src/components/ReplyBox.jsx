@@ -15,14 +15,14 @@ constructor(props){
 submitReply(){
   const { email } = this.props.user;
   const { reply } = this.state;
-  const { cId} = this.props;
+  const { cId, name } = this.props;
   if(reply ===''){
     return alert("Cannot submit blank reply");
   } else
     if(email===null){
       return alert("You have to sign in first");
     } else {
-      answerRef.push({email, comment: reply, commentableId:cId, type:"comment"});
+      answerRef.push({email, name, comment: reply, commentableId:cId, type:"comment"});
       this.setState({reply: ''})
     }
 }

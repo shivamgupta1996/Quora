@@ -18,10 +18,9 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 firebaseApp.auth().onAuthStateChanged(user => {
   if(user) {
-
     history.push("/app");
-    const { email } = user;
-    store.dispatch(logUser(email));
+    const { email,uid } = user;
+    store.dispatch(logUser(email,uid));
   } else {
     // browserHistory.replace('/signin');
 

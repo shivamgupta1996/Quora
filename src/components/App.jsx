@@ -12,11 +12,14 @@ class App extends Component {
     super(props);
 
     this.state = {
-      detail : {},
+      name:"",
     }
   }
-
-  componentDidMount(){
+  componentWillReceiveProps(nextProps) {
+    const {uid} = nextProps.user;
+    firebaseApp.database().ref(`users/${uid}`).on('value', snap =>{
+      this.setState({name : snap.val().username});
+    })
   }
 
   signout(){
@@ -43,7 +46,8 @@ class App extends Component {
 
   render(){
     const {email} = this.props.user;
-    console.log("uid",this.props.uid);
+    const {name} = this.state;
+    
     return(
       <div className="wrapper">
         <div className="container-fluid header">
@@ -53,7 +57,7 @@ class App extends Component {
             </div>
 
             <div className="profileBox">
-              Hello, {email}
+              Hello, {name}
               <div className="profileOption">
                 {this.renderButton()}
               </div>
@@ -82,10 +86,9 @@ class App extends Component {
 
   function mapStateToProps(state){
 
-    const {user, uid} = state;
+    const {user} = state;
     return {
       user,
-      uid
     }
 
   }

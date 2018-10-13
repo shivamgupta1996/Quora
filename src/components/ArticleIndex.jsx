@@ -12,9 +12,9 @@ class ArticleIndex extends Component {
       questionRef.on('value',snap => {
         let articles = [];
         snap.forEach(article => {
-          const { email, title, body } = article.val();
+          const { email, title, name } = article.val();
           const serverKey = article.key;
-          articles.push({email, title, body, serverKey})
+          articles.push({email, title, name, serverKey})
         })
         this.props.postedArticles(articles);
         })
@@ -24,7 +24,7 @@ class ArticleIndex extends Component {
     renderArticles(){
       let listItems = this.props.articles.map((t,index) => {
 
-        return( <Link to={`/articleShow/${t.serverKey}`} key={index}><li className = "list-group-item">{index+1}) {t.title}  <small><em>    -{t.email}</em></small></li></Link>);
+        return( <Link to={`/articleShow/${t.serverKey}`} key={index}><li className = "list-group-item">{index+1}) {t.title}  <small><em>    -{t.name}</em></small></li></Link>);
 
       });
       return <div className="transition-item list-page">{listItems}</div>;
